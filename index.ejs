@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timers</title>
+	<meta charset = "utf-8">
+	
+	<style type = "text/css">
+		body {
+			color:#333;
+			background: #eee;
+			font-family:Arial;
+			font-size:1em;
+		}
+		h3 {
+			color:gray;
+			margin-bottom:0;
+			margin-top:30px;
+		}
+		#wrapper, #banner {
+			width:500px;
+			margin-left:auto;
+			margin-right:auto;
+			margin-top:0px;
+			margin-bottom:0px;
+			border-right:solid 1px silver;
+			border-left:solid 1px silver;
+			background:white;
+			padding:10px;
+		}
+		#banner {
+			text-align:center;
+			color:white;
+			background:teal;
+			margin-top:25px;
+		}
+		#form1 {
+			margin-left:auto;
+			margin-right:auto;
+			margin-top:10px;
+			padding:5px;
+			color:teal;
+		}
+		table {
+			width:400px;
+			margin-left:auto;
+			margin-right:auto;
+			
+		}
+		table td {
+			padding-left:10px;
+			padding-right:10px;
+			padding-bottom:5px;			
+		}
+		table th {
+			text-align:left;
+			padding-left:10px;
+			padding-right:10px;
+			padding-bottom:0px;
+			font-weight:normal;
+		}
+		td input {
+			width:6em;
+		}
+	</style>
+	
+	<script>
+		window.onload = function(){	
+			<% if(timerParams) {%>
+				elements=getElements("t1Start","t1Run","select1","t2Start","t2Run","select2","t3Start","t3Run","select3",
+					"t4Start","t4Run","select4");
+				elements.t1Start.value="<%=timerParams.t1Start %>";
+				elements.t1Run.value="<%=timerParams.t1Run %>";
+				elements.select1.selectedIndex="<%=timerParams.output1 %>";
+				
+				elements.t2Start.value="<%=timerParams.t2Start %>";
+				elements.t2Run.value="<%=timerParams.t2Run %>";
+				elements.select2.selectedIndex="<%=timerParams.output2 %>";
+			
+				elements.t3Start.value="<%=timerParams.t3Start %>";
+				elements.t3Run.value="<%=timerParams.t3Run %>";
+				elements.select3.selectedIndex="<%=timerParams.output3 %>";
+				
+				elements.t4Start.value="<%=timerParams.t4Start %>";
+				elements.t4Run.value="<%=timerParams.t4Run %>";
+				elements.select4.selectedIndex="<%=timerParams.output4 %>";			
+			<% } %>							
+		}		
+		function getElements(){
+			var elements={};
+			for(var i=0;i<arguments.length;++i){
+				elements[arguments[i]]=document.getElementById(arguments[i]);
+				}
+			return elements;				
+		}
+					
+	</script>
+</head>
+<body>
+	<h1 id="banner">Timers</h1>
+	<div id="wrapper">
+		<form id="form1" method="post" action="/set" >
+			<table>
+				<tr>
+					<th></td>
+					<th>Start</td>
+					<th>Run (min)</td>
+					<th>Relay</th>
+				</tr>
+				<tr>
+					<td>Timer 1:</td>
+					<td><input type="text" id="t1Start" name="t1Start" value="00:00:00" pattern="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"></td>
+					<td><input type="text" id="t1Run" name="t1Run" value="0" pattern="[0-9\.]{1,}"></td>
+					<td><select id="select1" name="output1">							
+							
+							<option value=0 selected>Relay 1</option>
+							<option value=1>Relay 2</option>
+							<option value=2>Relay 3</option>
+							<option value=3>Relay 4</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Timer 2:</td>
+					<td><input type="text" id="t2Start" name="t2Start" value="00:00:00" pattern="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"></td>
+					<td><input type="text" id="t2Run" name="t2Run" value="0" pattern="[0-9\.]{1,}"></td>
+					<td><select id="select2" name="output2">
+							
+							<option value=0>Relay 1</option>
+							<option value=1 selected>Relay 2</option>
+							<option value=2>Relay 3</option>
+							<option value=3>Relay 4</option>
+						</select>
+					</td>
+				</tr>				
+				<tr>
+					<td>Timer 3:</td>
+					<td><input type="text" id="t3Start" name="t3Start" value="00:00:00" pattern="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"></td>
+					<td><input type="text" id="t3Run" name="t3Run" value="0" pattern="[0-9\.]{1,}"></td>
+					<td><select id="select3" name="output3">
+							
+							<option value=0>Relay 1</option>
+							<option value=1>Relay 2</option>
+							<option value=2 selected>Relay 3</option>
+							<option value=3>Relay 4</option>
+						</select>
+					</td>
+				</tr>				
+				<tr>
+					<td>Timer 4:</td>
+					<td><input type="text" id="t4Start" name="t4Start" value="00:00:00" pattern="[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9]"></td>
+					<td><input type="text" id="t4Run" name="t4Run" value="0" pattern="[0-9\.]{1,}"></td>
+					<td><select id="select4" name="output4">							
+							
+							<option value=0>Relay 1</option>
+							<option value=1>Relay 2</option>
+							<option value=2>Relay 3</option>
+							<option value=3 selected>Relay 4</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		<p style="text-align:center"><input type="submit" name="start" value="Start"></p>
+	</form>
+	</div>
+</body>	
+</html>
+	

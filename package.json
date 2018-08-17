@@ -1,0 +1,11 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "A place to write some practice code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Schiro",
+  "license": "ISC"
+}
