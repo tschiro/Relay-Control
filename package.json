@@ -1,7 +1,7 @@
 {
-  "name": "practice",
+  "name": "relays",
   "version": "1.0.0",
-  "description": "A place to write some practice code",
+  "description": "Set timers to control relays",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
